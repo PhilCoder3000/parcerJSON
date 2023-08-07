@@ -1,0 +1,13 @@
+{
+  "name": "parcerJSON",
+  "version": "1.0.0",
+  "description": "Parcer for JSON",
+  "main": "index.ts",
+  "repository": "https://github.com/PhilCoder3000/parcerJSON.git",
+  "author": "Philipp Zakharov <philippzakharov@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  }
+}
