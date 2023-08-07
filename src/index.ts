@@ -1,11 +1,3 @@
-import { prInt } from './core/prInt/index'
+import { parse } from './core/prMathExp/prMathExp';
 
-function main() {
-  
-  console.log(prInt('1020'))
-  console.log(prInt('a1020'))
-  console.log(prInt('-1020'))
-}
-
-
-main()
+console.dir(parse('22*(33+44)/2'), { depth: null })
