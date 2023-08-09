@@ -26,7 +26,7 @@ export function prInt(value: string) {
   const result = value
     .split('')
     .reduce(
-      (acc, char, index, arr) => acc + dict[char] * 10 ** (arr.length - index - 1),
+      (acc, char, index, arr) => acc + dict[char]! * 10 ** (arr.length - index - 1),
       0,
     );
 

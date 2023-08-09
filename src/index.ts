@@ -1,3 +1,9 @@
-import { parse } from './core/prMathExp/prMathExp';
+// import { tag } from './core/tag';
 
-console.dir(parse('22*(33+44)/2'), { depth: null })
+import { tag } from './core/tag/tag'
+
+const iter = tag('<div>')
+
+console.log(iter('<div>').next())
+console.log('asdfsdf')
+
