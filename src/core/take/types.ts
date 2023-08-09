@@ -1,6 +1,6 @@
 import { ParserOptions } from '../types';
 
-export interface TakeOptions extends ParserOptions {
+export interface TakeOptions<T> extends ParserOptions<T> {
   min?: number;
   max?: number
 }

@@ -5,7 +5,7 @@ import { TakeOptions } from './types';
 
 export function take(
   pattern: Pattern,
-  opts: TakeOptions = {},
+  opts: TakeOptions<string> = {},
 ): Parser<string, string> {
   return function* (source, prev) {
     const { min = 1, max = Infinity } = opts;
