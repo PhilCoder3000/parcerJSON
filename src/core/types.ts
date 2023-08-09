@@ -17,3 +17,8 @@ export type Parser<T = unknown, R = unknown> = (
   iter: Iterable<T>,
   prev?: ParserValue,
 ) => Generator<ParserState | Token<T>, ParserResult<R>, Iterable<string>>;
+
+export interface ParserOptions<T = unknown> {
+  token?: string
+  tokenValue?(arg0: unknown): T 
+}

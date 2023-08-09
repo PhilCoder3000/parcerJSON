@@ -1,9 +1,7 @@
-// import { tag } from './core/tag';
+import { take } from './core/take';
 
-import { tag } from './core/tag/tag'
+const num = take(/\d/)
+const iter = num('132123132123d')
 
-const iter = tag('<div>')
-
-console.log(iter('<div>').next())
-console.log('asdfsdf')
-
+console.log(iter.next())
+// console.log(iter.next())

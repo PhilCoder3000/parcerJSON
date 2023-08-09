@@ -1,17 +1,24 @@
 import { intoIter } from '../helpers/intoIter';
 import { testChar } from '../helpers/testChar';
-import { ParserState, Parser, Pattern, ParserOptions } from '../types';
+import { Parser, ParserState, Pattern } from '../types';
+import { TakeOptions } from './types';
 
-export function tag(
-  pattern: Iterable<Pattern>,
-  opts: ParserOptions<string> = {},
+export function take(
+  pattern: Pattern,
+  opts: TakeOptions = {},
 ): Parser<string, string> {
   return function* (source, prev) {
+    const { min = 1, max = Infinity } = opts;
     let iter = intoIter(source);
+    let count = 0;
 
     let value = '';
 
-    for (const test of pattern) {
+    while (true) {
+      if (count >= max) {
+        break;
+      }
+
       let chunk = iter.next(),
         char = chunk.value;
 
@@ -22,7 +29,16 @@ export function tag(
         char = chunk.value;
       }
 
-      testChar(test, char, prev);
+      try {
+        if (testChar(pattern, char, prev)) {
+          count++;
+        }
+      } catch (error) {
+        if (count < min) {
+          throw error;
+        }
+        break
+      }
 
       value += char;
     }
@@ -35,7 +51,7 @@ export function tag(
     }
 
     const token = {
-      type: 'TAG',
+      type: 'TAKE',
       value,
     };
 
